@@ -5,12 +5,6 @@ import { createHmac } from "node:crypto";
 const MAX_INTEGER = 0x7fffffff;
 const BASE32_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
 
-/**
- *
- * @param {string | Buffer} secret Base-32 encoded secret key or a buffer.
- * @param {import('./index.js').Options} [options]
- * @returns The generated time-based one-time password.
- */
 export const totp = (
   secret,
   { digits = 6, period = 30, algorithm = "sha1", timestamp = Date.now() } = {}
@@ -30,7 +24,6 @@ export const totp = (
   return substringFromStart(otp, otp.length - digits, digits);
 };
 
-/** @param {string} base32 */
 const base32ToHex = (base32) => {
   let bits = "",
     hex = "";
@@ -46,10 +39,7 @@ const base32ToHex = (base32) => {
   }
   return hex;
 };
-/** @param {string} hex */
 const hexToDecimal = (hex) => parseInt(hex, 16);
-/** @param {number} decimal */
 const decimalToHex = (decimal) => decimal.toString(16).padStart(2, "0");
-/** @type {(str: string, start: number, end: number) => string} */
 const substringFromStart = (str, start, end) =>
   str.substring(start, start + end);
