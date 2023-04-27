@@ -30,7 +30,7 @@ const base32ToHex = (base32) => {
   base32 = base32.replace(/=+$/, "");
   for (let i = 0; i < base32.length; i++) {
     const val = BASE32_CHARS.indexOf(base32.charAt(i).toUpperCase());
-    if (val === -1) throw new Error("Invalid character in the base32 string.");
+    if (val === -1) throw new Error(`Invalid base32 character: ${base32[i]}`);
     bits += val.toString(2).padStart(5, "0");
   }
   for (let i = 0; i + 8 <= bits.length; i += 8) {
