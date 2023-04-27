@@ -1,6 +1,6 @@
 {
   "name": "node-totp-generator",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A zero-dependency time-based one-time password generator for Node.js",
   "repository": "https://github.com/agent-ly/node-totp-generator",
   "license": "MIT",
